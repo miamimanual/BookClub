@@ -25,6 +25,8 @@ header {
 .sidebar-profile-pic img {
     width: 6rem;
     height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .logo {

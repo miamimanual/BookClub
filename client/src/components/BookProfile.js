@@ -1,5 +1,5 @@
 import { Component } from "react";
-//import ProfilePicture from "./ProfilePicture";
+import EventList from "./EventList";
 import axios from "../axios";
 //import FriendButton from "./FriendButton"; // attenting button
 import { getBookCoverById } from "../lib";
@@ -10,12 +10,11 @@ class BookProfile extends Component {
 
         this.state = {
             book: {
-                // user
                 title: "",
                 year: "",
                 name: "",
                 cover: "",
-                // bio: "",
+                events: [],
             },
         };
     }
@@ -30,11 +29,11 @@ class BookProfile extends Component {
             .then((response) =>
                 this.setState({
                     book: {
-                        title: response.data.result.title,
-                        name: response.data.result.name,
-                        year: response.data.result.year,
-                        cover: getBookCoverById(response.data.result.id),
-                        //`/covers/${response.data.result.id}.jpg`,
+                        title: response.data.title,
+                        name: response.data.name,
+                        year: response.data.year,
+                        cover: getBookCoverById(response.data.id),
+                        events: response.data.events,
                     },
                 })
             )
@@ -49,7 +48,7 @@ class BookProfile extends Component {
     }
 
     render() {
-        const { title, name, year, cover } = this.state.book;
+        const { title, name, year, cover, events } = this.state.book;
         return (
             <section className="profile">
                 <h2>{title}</h2>
@@ -59,6 +58,7 @@ class BookProfile extends Component {
                 <div className="sidebar-content">
                     {name} ({year})
                 </div>
+                <EventList events={events} />
             </section>
         );
     }

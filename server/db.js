@@ -84,6 +84,32 @@ function getBookById({ id }) {
         .then((result) => result.rows[0]);
 }
 
+/*
+function getAttendance() {
+    return db
+        .query(
+            `SELECT books.id, title, year, cover_url, name, description
+        FROM attendance
+        JOIN books
+        ON author_id = authors.id`
+        )
+        .then((result) => result.row[0]);
+}
+*/
+
+function getEventsByBook({ id }) {
+    return db
+        .query(
+            `SELECT book_id, creator_id, event_date, first, last 
+            FROM events 
+            JOIN users
+            ON creator_id = users.id
+            WHERE book_id = $1`,
+            [id]
+        )
+        .then((result) => result.rows);
+}
+
 module.exports = {
     createUser,
     getUserByEmail,
@@ -92,4 +118,5 @@ module.exports = {
     updateUserBio,
     getMatchingBooks,
     getBookById,
+    getEventsByBook,
 };

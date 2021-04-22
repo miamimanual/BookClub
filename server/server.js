@@ -17,6 +17,7 @@ const {
     updateUserBio,
     getMatchingBooks,
     getBookById,
+    getEventsByBook,
 } = require("./db");
 
 app.use(compression());
@@ -173,6 +174,8 @@ app.put("/user", (request, response) => {
         });
 });
 
+/*---- Attendance -----*/
+
 /* ---- FIND/SEARCH BOOKS ----*/
 
 app.get("/api/search", (request, response) => {
@@ -210,16 +213,21 @@ app.get("/api/books/:id", (request, response) => {
     console.log("BOOKS, ID", id);
 
     getBookById({ id })
-        .then((result) => {
-            if (!result) {
+        .then((book) => {
+            if (!book) {
                 response.statusCode = 404;
                 response.json({
                     message: "book not found",
                 });
                 return;
             }
-            console.log("[books/:id] GET BOOK BY ID", result);
-            response.json({ result });
+            console.log("[books/:id] GET BOOK BY ID", book);
+            getEventsByBook({ id }).then((events) => {
+                response.json({
+                    ...book,
+                    events,
+                });
+            });
         })
         .catch((error) => console.log("GET: books by Id", error));
 });
