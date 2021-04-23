@@ -2,7 +2,7 @@ import { Component } from "react";
 import EventList from "./EventList";
 import EventForm from "./EventForm";
 import axios from "../axios";
-//import FriendButton from "./FriendButton"; // attenting button
+import AttendingButton from "./AttendingButton";
 import { getBookCoverById } from "../lib";
 
 class BookProfile extends Component {
@@ -95,6 +95,7 @@ class BookProfile extends Component {
                     onNewEventClick={this.onNewEventClick}
                 />
                 {this.state.showCreateEventForm && this.renderForm()}
+                <AttendingButton />
             </section>
         );
     }

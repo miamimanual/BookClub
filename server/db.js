@@ -84,19 +84,6 @@ function getBookById({ id }) {
         .then((result) => result.rows[0]);
 }
 
-/*
-function getAttendance() {
-    return db
-        .query(
-            `SELECT books.id, title, year, cover_url, name, description
-        FROM attendance
-        JOIN books
-        ON author_id = authors.id`
-        )
-        .then((result) => result.row[0]);
-}
-*/
-
 function getEventsByBook({ id }) {
     return db
         .query(
@@ -119,15 +106,41 @@ function createEvent({ bookId, creator, date }) {
         .then((result) => result.rows[0]);
 }
 
-function getEventById({ eventId }) {
-    return db.query(
-        `SELECT book_id, events.id AS event_id, event_date, first, last
-        FROM events
-        JOIN users
-        ON creator_id = users.id
-        WHERE event_id = $1`
-    );
+function getAttendance() {
+    return db
+        .query(
+            `SELECT books.id, title, year, cover_url, name, description
+        FROM attendance
+        JOIN books
+        ON author_id = authors.id`
+        )
+        .then((result) => result.row[0]);
 }
+
+function getAttendance(userId) {
+    return db
+        .query(
+            `SELECT user_id, event_id, attendance 
+        FROM attendance
+        JOIN events
+        ON event_id = events.id
+        JOIN users
+        ON user_id = users.id`,
+            [userId]
+        )
+        .then((result) => result.row[0]);
+}
+
+function createAttendance(userId, eventId, attendance) {
+    return db
+        .query(
+            `INSERT INTO attendance (user_id, event_id, attendance) VALUES ($1, $2, $3) RETURNING *`,
+            [userId, eventId, attendance]
+        )
+        .then((result) => result.rows[0]);
+}
+
+function deleteAttendance() {}
 
 module.exports = {
     createUser,
@@ -139,4 +152,6 @@ module.exports = {
     getBookById,
     getEventsByBook,
     createEvent,
+    getAttendance,
+    createAttendance,
 };

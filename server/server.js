@@ -19,6 +19,8 @@ const {
     getBookById,
     getEventsByBook,
     createEvent,
+    getAttendance,
+    createAttendance,
 } = require("./db");
 
 app.use(compression());
@@ -175,8 +177,6 @@ app.put("/user", (request, response) => {
         });
 });
 
-/*---- Attendance -----*/
-
 /* ---- FIND/SEARCH BOOKS ----*/
 
 app.get("/api/search", (request, response) => {
@@ -253,6 +253,25 @@ app.post("/api/books/:id/events", (request, response) => {
         })
         .catch((error) => console.log("GET: books by Id", error));
 });
+
+/*---- ATTENDANCE -----*/
+
+app.get("/api/books/:id/events/:event_id/attendance", (request, response) => {
+
+})
+
+app.post("/api/books/:id/events/:event_id/attendance", (request, response)=> {
+    const userId = request.session.userId; 
+    const eventId = requrst.params.event_id;  
+    const attendance = true; 
+
+    createAttendance(userId, eventId, attendance).then((attendance)=> {
+        response.json(attendance);
+    })
+
+})
+
+app.delete() => {}
 
 app.get("/welcome", (request, response) => {
     if (request.session.userId) {
