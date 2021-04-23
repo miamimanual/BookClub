@@ -140,7 +140,15 @@ function createAttendance(userId, eventId, attendance) {
         .then((result) => result.rows[0]);
 }
 
-function deleteAttendance() {}
+function deleteAttendance(userId) {
+    return db
+        .query(
+            `DELETE FROM attendance
+        WHERE user_id = $1`,
+            [userId]
+        )
+        .then((result) => result.rows[0]);
+}
 
 module.exports = {
     createUser,
@@ -154,4 +162,5 @@ module.exports = {
     createEvent,
     getAttendance,
     createAttendance,
+    deleteAttendance,
 };

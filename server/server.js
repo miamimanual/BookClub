@@ -21,6 +21,7 @@ const {
     createEvent,
     getAttendance,
     createAttendance,
+    deleteAttendance,
 } = require("./db");
 
 app.use(compression());
@@ -257,21 +258,47 @@ app.post("/api/books/:id/events", (request, response) => {
 /*---- ATTENDANCE -----*/
 
 app.get("/api/books/:id/events/:event_id/attendance", (request, response) => {
+    const userId = request.session.userId;
+    console.log(userId);
 
-})
+    getAttendance(userId)
+        .then((result) => {
+            if (!result) {
+                response.statusCode = 404;
+                response.json({
+                    message: `No attendance`,
+                });
+                return;
+            }
+            response.json(result);
+        })
+        .catch((error) => console.log("server[app.get]: error", error));
+});
 
-app.post("/api/books/:id/events/:event_id/attendance", (request, response)=> {
-    const userId = request.session.userId; 
-    const eventId = requrst.params.event_id;  
-    const attendance = true; 
+app.post("/api/books/:id/events/:event_id/attendance", (request, response) => {
+    const userId = request.session.userId;
+    const eventId = requrst.params.event_id;
+    const attendance = true;
 
-    createAttendance(userId, eventId, attendance).then((attendance)=> {
-        response.json(attendance);
-    })
+    createAttendance(userId, eventId, attendance)
+        .then((attendance) => {
+            response.json(attendance);
+        })
+        .catch((error) => console.log("server[app.post]: error", error));
+});
 
-})
+app.delete(
+    "/api/books/:id/events/:event_id/attendance",
+    (request, response) => {
+        const userId = request.session.userId;
 
-app.delete() => {}
+        deleteAttendance(userId)
+            .then(() => {
+                response.json({ messsage: "no attendance" });
+            })
+            .catch((error) => console.log("server[app.delete]: error", error));
+    }
+);
 
 app.get("/welcome", (request, response) => {
     if (request.session.userId) {
