@@ -68,8 +68,8 @@ class BookProfile extends Component {
             .then((response) => {
                 this.setState({
                     newEvent: {
-                        date: response.data.date,
-                        first: response.data.first,
+                        date: response.data.event_date,
+                        first: response.data.creator_id.first,
                         last: response.data.last,
                     },
                 });
