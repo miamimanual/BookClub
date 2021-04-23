@@ -2,7 +2,6 @@ import { Component } from "react";
 import EventList from "./EventList";
 import EventForm from "./EventForm";
 import axios from "../axios";
-import AttendingButton from "./AttendingButton";
 import { getBookCoverById } from "../lib";
 
 class BookProfile extends Component {
@@ -80,7 +79,9 @@ class BookProfile extends Component {
 
     render() {
         const { title, name, year, cover, events } = this.state.book;
-        console.log("BOOK PROFILE, EVENTS", events);
+        const bookId = this.props.id;
+
+        console.log("BOOK PROFILE, EVENTS", this.props);
         return (
             <section className="profile">
                 <h2>{title}</h2>
@@ -93,9 +94,10 @@ class BookProfile extends Component {
                 <EventList
                     events={events}
                     onNewEventClick={this.onNewEventClick}
+                    bookId={bookId}
+                    onAttendingtoEvent={this.props.onAttendingtoEvent}
                 />
                 {this.state.showCreateEventForm && this.renderForm()}
-                <AttendingButton />
             </section>
         );
     }

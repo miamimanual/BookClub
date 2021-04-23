@@ -19,7 +19,7 @@ class App extends Component {
                 profilePicURL: "",
                 bio: "",
             },
-
+            userEvents: [],
             showModal: false,
         };
         // bind things!
@@ -28,11 +28,13 @@ class App extends Component {
         this.onUpload = this.onUpload.bind(this);
         this.onModalClose = this.onModalClose.bind(this);
         this.onSaveBio = this.onSaveBio.bind(this);
+        this.onAttendingtoEvent = this.onAttendingtoEvent.bind(this);
     }
     componentDidMount() {
         axios.get("/user").then((response) => {
             console.log("[App] axios success", response.data);
             this.setState({
+                ...this.state,
                 user: {
                     firstName: response.data.result.first,
                     lastName: response.data.result.last,
@@ -41,6 +43,7 @@ class App extends Component {
                 },
             });
         });
+        //   axios.get
     }
 
     onProfilePictureClick() {
@@ -81,6 +84,11 @@ class App extends Component {
             .catch((error) => {
                 console.log("[App] saving new bio error", error);
             });
+    }
+
+    onAttendingtoEvent() {
+        /* axios.get */
+        console.log();
     }
 
     render() {
@@ -136,6 +144,7 @@ class App extends Component {
                                 id={parseInt(props.match.params.id)}
                                 key={props.match.url}
                                 history={props.history}
+                                onAttendingtoEvent={this.onAttendingtoEvent}
                             />
                         )}
                     />

@@ -259,7 +259,7 @@ app.post("/api/books/:id/events", (request, response) => {
 
 app.get("/api/books/:id/events/:event_id/attendance", (request, response) => {
     const userId = request.session.userId;
-    console.log(userId);
+    console.log("SERVER, app.get", userId);
 
     getAttendance(userId)
         .then((result) => {
@@ -277,8 +277,10 @@ app.get("/api/books/:id/events/:event_id/attendance", (request, response) => {
 
 app.post("/api/books/:id/events/:event_id/attendance", (request, response) => {
     const userId = request.session.userId;
-    const eventId = requrst.params.event_id;
+    const eventId = request.params.event_id;
     const attendance = true;
+
+    console.log("SERVER, app.post", userId, eventId, attendance);
 
     createAttendance(userId, eventId, attendance)
         .then((attendance) => {
@@ -292,7 +294,7 @@ app.delete(
     (request, response) => {
         const userId = request.session.userId;
 
-        deleteAttendance(userId)
+        deleteAttendance(userId) // eventId?
             .then(() => {
                 response.json({ messsage: "no attendance" });
             })

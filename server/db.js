@@ -106,17 +106,6 @@ function createEvent({ bookId, creator, date }) {
         .then((result) => result.rows[0]);
 }
 
-function getAttendance() {
-    return db
-        .query(
-            `SELECT books.id, title, year, cover_url, name, description
-        FROM attendance
-        JOIN books
-        ON author_id = authors.id`
-        )
-        .then((result) => result.row[0]);
-}
-
 function getAttendance(userId) {
     return db
         .query(
