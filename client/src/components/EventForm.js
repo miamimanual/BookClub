@@ -1,16 +1,17 @@
 import { useState } from "react";
 
-export default function EventForm() {
+export default function EventForm({ onFormSubmit }) {
     const [date, setDate] = useState("");
+
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(date);
+        //console.log(date);
+        onFormSubmit(date);
     };
-    /*
-    onSubmit() {
+    const onChange = (event) => {
         event.preventDefault();
-        console.log(date);
-    } */
+        setDate(event.target.value);
+    };
 
     return (
         <form onSubmit={onSubmit}>
@@ -21,10 +22,15 @@ export default function EventForm() {
                     name="date"
                     value={date}
                     required
-                    onChange={(event) => setDate(event.target.value)}
+                    onChange={onChange}
                 />
             </label>
             <input type="submit" value="Submit" />
         </form>
     );
 }
+
+/*
+ onChange={(event) => setDate(event.target.value)}
+
+*/

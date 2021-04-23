@@ -21,6 +21,7 @@ class BookProfile extends Component {
         };
 
         this.onNewEventClick = this.onNewEventClick.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -59,8 +60,25 @@ class BookProfile extends Component {
         });
     }
 
+    onFormSubmit(date) {
+        console.log("DATE", date);
+
+        axios
+            .post(`/api/books/${this.props.id}/events`, { date })
+            .then((response) => {
+                this.setState({
+                    newEvent: {
+                        date: response.data.date,
+                        first: response.data.first,
+                        last: response.data.last,
+                    },
+                });
+            });
+    }
+
     renderForm() {
-        return <EventForm />;
+        const { date } = this.state.book;
+        return <EventForm date={date} onFormSubmit={this.onFormSubmit} />;
     }
 
     render() {
@@ -88,6 +106,11 @@ class BookProfile extends Component {
 export default BookProfile;
 
 /*
+
+   /* this.setState({
+            ...this.state.book,
+            //  date,
+            showCreateEventForm: false,
 
              <EventList events={events} />
 
