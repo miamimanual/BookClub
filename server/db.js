@@ -116,7 +116,7 @@ function createEvent({ bookId, creator, date }) {
             `INSERT INTO events (book_id, creator_id, event_date) VALUES ($1, $2, $3) RETURNING *`,
             [bookId, creator, date]
         )
-        .then((result) => result.rows[0].id);
+        .then((result) => result.rows);
 }
 
 module.exports = {

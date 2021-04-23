@@ -236,9 +236,9 @@ app.get("/api/books/:id", (request, response) => {
 /*------ CREATE EVENT -------*/
 
 app.post("/api/books/:id/events", (request, response) => {
-    const { bookId } = request.params.id;
+    const bookId = request.params.id;
     const { date } = request.body;
-    const { creator } = request.session.userId;
+    const creator = request.session.userId;
     console.log(
         "SERVER [app.post] create event: 1.request.params, 2,request.body",
         request.params,
