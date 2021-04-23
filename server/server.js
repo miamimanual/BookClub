@@ -18,6 +18,7 @@ const {
     getMatchingBooks,
     getBookById,
     getEventsByBook,
+    createEvent,
 } = require("./db");
 
 app.use(compression());
@@ -227,6 +228,22 @@ app.get("/api/books/:id", (request, response) => {
                     ...book,
                     events,
                 });
+            });
+        })
+        .catch((error) => console.log("GET: books by Id", error));
+});
+
+/*------ CREATE EVENT -------*/
+
+app.post("/api/books/:id/events", (request, response) => {
+    const { bookId, creator, date } = request.params;
+    console.log("events, book, creator, date", bookId, creator, date);
+
+    createEvent({ bookId, creator, date })
+        .then((newEvent) => {
+            console.log("newEvent", newEvent);
+            response.json({
+                ...newEvent,
             });
         })
         .catch((error) => console.log("GET: books by Id", error));

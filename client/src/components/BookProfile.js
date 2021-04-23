@@ -1,5 +1,6 @@
 import { Component } from "react";
 import EventList from "./EventList";
+import EventForm from "./EventForm";
 import axios from "../axios";
 //import FriendButton from "./FriendButton"; // attenting button
 import { getBookCoverById } from "../lib";
@@ -16,7 +17,10 @@ class BookProfile extends Component {
                 cover: "",
                 events: [],
             },
+            showCreateEventForm: false,
         };
+
+        this.onNewEventClick = this.onNewEventClick.bind(this);
     }
 
     componentDidMount() {
@@ -47,8 +51,21 @@ class BookProfile extends Component {
             });
     }
 
+    onNewEventClick() {
+        console.log("Hello");
+        this.setState({
+            ...this.state.book,
+            showCreateEventForm: true,
+        });
+    }
+
+    renderForm() {
+        return <EventForm />;
+    }
+
     render() {
         const { title, name, year, cover, events } = this.state.book;
+        console.log("BOOK PROFILE, EVENTS", events);
         return (
             <section className="profile">
                 <h2>{title}</h2>
@@ -58,7 +75,11 @@ class BookProfile extends Component {
                 <div className="sidebar-content">
                     {name} ({year})
                 </div>
-                <EventList events={events} />
+                <EventList
+                    events={events}
+                    onNewEventClick={this.onNewEventClick}
+                />
+                {this.state.showCreateEventForm && this.renderForm()}
             </section>
         );
     }
@@ -67,6 +88,9 @@ class BookProfile extends Component {
 export default BookProfile;
 
 /*
+
+             <EventList events={events} />
+
                     <ProfilePicture />
 
                   <p> {bio || "No bio yet"}</p>

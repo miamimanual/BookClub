@@ -100,14 +100,23 @@ function getAttendance() {
 function getEventsByBook({ id }) {
     return db
         .query(
-            `SELECT book_id, creator_id, event_date, first, last 
+            `SELECT book_id, events.id AS event_id, creator_id, event_date, first, last 
             FROM events 
             JOIN users
             ON creator_id = users.id
-            WHERE book_id = $1`,
+            WHERE book_id = $1`, // why book_id?
             [id]
         )
         .then((result) => result.rows);
+}
+
+function createEvent({ bookId, creator, date }) {
+    return db
+        .query(
+            `INSERT INTO events (book_id, creator_id, event_date) VALUES ($1, $2, $3) RETURNING id`,
+            [bookId, creator, date]
+        )
+        .then((result) => result.rows[0].id);
 }
 
 module.exports = {
@@ -119,4 +128,5 @@ module.exports = {
     getMatchingBooks,
     getBookById,
     getEventsByBook,
+    createEvent,
 };
