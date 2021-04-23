@@ -259,9 +259,10 @@ app.post("/api/books/:id/events", (request, response) => {
 
 app.get("/api/books/:id/events/:event_id/attendance", (request, response) => {
     const userId = request.session.userId;
+    const eventId = request.params.event_id;
     console.log("SERVER, app.get", userId);
 
-    getAttendance(userId)
+    getAttendance(userId, eventId)
         .then((result) => {
             if (!result) {
                 response.statusCode = 404;

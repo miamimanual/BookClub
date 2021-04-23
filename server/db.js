@@ -106,7 +106,7 @@ function createEvent({ bookId, creator, date }) {
         .then((result) => result.rows[0]);
 }
 
-function getAttendance(userId) {
+function getAttendance(userId, eventId) {
     return db
         .query(
             `SELECT user_id, event_id, attendance 
@@ -114,10 +114,11 @@ function getAttendance(userId) {
         JOIN events
         ON event_id = events.id
         JOIN users
-        ON user_id = users.id`,
-            [userId]
+        ON user_id = users.id
+        WHERE event_id = $2 AND user_id = $1 `,
+            [userId, eventId]
         )
-        .then((result) => result.row[0]);
+        .then((result) => result.rows[0]);
 }
 
 function createAttendance(userId, eventId, attendance) {
