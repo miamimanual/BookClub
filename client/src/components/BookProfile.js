@@ -66,12 +66,9 @@ class BookProfile extends Component {
         axios
             .post(`/api/books/${this.props.id}/events`, { date })
             .then((response) => {
+                const newBook = { ...this.state.book, events: [response.data] };
                 this.setState({
-                    newEvent: {
-                        date: response.data.event_date,
-                        first: response.data.creator_id.first,
-                        last: response.data.last,
-                    },
+                    book: newBook,
                 });
             });
     }

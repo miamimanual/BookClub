@@ -239,24 +239,16 @@ app.post("/api/books/:id/events", (request, response) => {
     const bookId = request.params.id;
     const { date } = request.body;
     const creator = request.session.userId;
-    console.log(
-        "SERVER [app.post] create event: 1.request.params, 2,request.body",
-        request.params,
-        request.body,
-        request.session
-    );
-    console.log(
-        "SERVER [app.post] create event: book, date, creator",
-        bookId,
-        date,
-        creator
-    );
 
     createEvent({ bookId, creator, date })
         .then((newEvent) => {
-            console.log("newEvent", newEvent);
-            response.json({
-                ...newEvent,
+            getUserById({ userId: creator }).then((user) => {
+                response.json({
+                    ...newEvent,
+                    event_id: newEvent.id,
+                    first: user.first,
+                    last: user.last,
+                });
             });
         })
         .catch((error) => console.log("GET: books by Id", error));

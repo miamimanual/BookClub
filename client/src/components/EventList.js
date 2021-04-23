@@ -1,4 +1,9 @@
-import axios from "../axios";
+function formatDate(date) {
+    console.log("date", date);
+    const dateObject = new Date(date);
+    const newDate = dateObject.toLocaleDateString("de-DE");
+    return newDate;
+}
 
 export default function EventList({ events, onNewEventClick }) {
     console.log("EVENTS", events);
@@ -6,9 +11,16 @@ export default function EventList({ events, onNewEventClick }) {
     function renderButton() {
         return <button onClick={onNewEventClick}>Create Event</button>;
     }
+
     function renderList() {
         return events.map((event) => {
-            return <article key={event.event_id}>{event.first}</article>;
+            return (
+                <article key={event.event_id}>
+                    Event Date: {formatDate(event.event_date)}
+                    <br></br>
+                    created by: {event.first} {event.last}
+                </article>
+            );
         });
     }
 

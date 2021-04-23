@@ -116,7 +116,17 @@ function createEvent({ bookId, creator, date }) {
             `INSERT INTO events (book_id, creator_id, event_date) VALUES ($1, $2, $3) RETURNING *`,
             [bookId, creator, date]
         )
-        .then((result) => result.rows);
+        .then((result) => result.rows[0]);
+}
+
+function getEventById({ eventId }) {
+    return db.query(
+        `SELECT book_id, events.id AS event_id, event_date, first, last
+        FROM events
+        JOIN users
+        ON creator_id = users.id
+        WHERE event_id = $1`
+    );
 }
 
 module.exports = {
