@@ -141,8 +141,9 @@ function deleteAttendance(userId) {
 }
 
 function getAttendingEvents(userId, eventId, attendance) {
-    return db.query(
-        `SELECT user_id, event_id, attendance, book_id, event_date, title, year, author_id, name, 
+    return db
+        .query(
+            `SELECT user_id, event_id, attendance, book_id, event_date, title, year, author_id, name, 
     FROM attendance
     JOIN events
     ON event_id = events.id
@@ -151,8 +152,9 @@ function getAttendingEvents(userId, eventId, attendance) {
     JOIN books 
     ON book_id = books.id
     WHERE users.id = $1 AND events.id = $2 AND attendanceId = $3`,
-        [userId, eventId, attendance]
-    );
+            [userId, eventId, attendance]
+        )
+        .then((result) => result.rows[0]);
 }
 
 module.exports = {

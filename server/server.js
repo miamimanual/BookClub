@@ -22,6 +22,7 @@ const {
     getAttendance,
     createAttendance,
     deleteAttendance,
+    getAttendingEvents,
 } = require("./db");
 
 app.use(compression());
@@ -302,6 +303,23 @@ app.delete(
             .catch((error) => console.log("server[app.delete]: error", error));
     }
 );
+
+/* ----------- ATTENDANCE LIST ---------------*/
+
+app.get("/api/user/:id/my-events/:event_id", (request, response) => {
+    const userId = request.session.userId;
+    const eventId = request.params.event_id;
+    const attendance = true;
+
+    getAttendingEvents(userId, eventId, attendance).then((result) => {
+        // can I name it attendingEvent?
+        if (attendance === false) {
+            response.json({ message: "no events yet" });
+            return;
+        }
+        response.json(result);
+    });
+});
 
 app.get("/welcome", (request, response) => {
     if (request.session.userId) {
