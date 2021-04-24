@@ -24,7 +24,6 @@ class App extends Component {
         };
         // bind things!
         this.onProfilePictureClick = this.onProfilePictureClick.bind(this);
-        //   this.componentDidMount = this.componentDidMount.bind(this);
         this.onUpload = this.onUpload.bind(this);
         this.onModalClose = this.onModalClose.bind(this);
         this.onSaveBio = this.onSaveBio.bind(this);
@@ -87,7 +86,12 @@ class App extends Component {
     }
 
     onEventResponse() {
-        /* axios.get */
+        axios.get("/api/user/:id/my-events/:event_id").then((response) => {
+            this.setState({
+                ...this.state,
+                userEvents: [response.data],
+            });
+        });
         console.log();
     }
 
