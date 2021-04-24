@@ -11,7 +11,7 @@ export default function EventList({
     events,
     onNewEventClick,
     bookId,
-    onAttendingtoEvent,
+    onEventResponse,
 }) {
     console.log("EVENTS", events);
 
@@ -30,7 +30,7 @@ export default function EventList({
                         <AttendingButton
                             bookId={bookId}
                             eventId={event.event_id}
-                            onAttendingtoEvent={onAttendingtoEvent}
+                            onEventResponse={onEventResponse}
                         />
                     </p>
                 </article>

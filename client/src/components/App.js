@@ -28,7 +28,7 @@ class App extends Component {
         this.onUpload = this.onUpload.bind(this);
         this.onModalClose = this.onModalClose.bind(this);
         this.onSaveBio = this.onSaveBio.bind(this);
-        this.onAttendingtoEvent = this.onAttendingtoEvent.bind(this);
+        this.onEventResponse = this.onEventResponse.bind(this);
     }
     componentDidMount() {
         axios.get("/user").then((response) => {
@@ -43,7 +43,7 @@ class App extends Component {
                 },
             });
         });
-        //   axios.get
+        //   axios.get("/api/user/my-events")
     }
 
     onProfilePictureClick() {
@@ -86,7 +86,7 @@ class App extends Component {
             });
     }
 
-    onAttendingtoEvent() {
+    onEventResponse() {
         /* axios.get */
         console.log();
     }
@@ -144,7 +144,7 @@ class App extends Component {
                                 id={parseInt(props.match.params.id)}
                                 key={props.match.url}
                                 history={props.history}
-                                onAttendingtoEvent={this.onAttendingtoEvent}
+                                onEventResponse={this.onEventResponse}
                             />
                         )}
                     />

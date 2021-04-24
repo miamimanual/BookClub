@@ -95,7 +95,7 @@ class BookProfile extends Component {
                     events={events}
                     onNewEventClick={this.onNewEventClick}
                     bookId={bookId}
-                    onAttendingtoEvent={this.props.onAttendingtoEvent}
+                    onEventResponse={this.props.onEventResponse}
                 />
                 {this.state.showCreateEventForm && this.renderForm()}
             </section>

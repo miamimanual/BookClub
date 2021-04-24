@@ -140,6 +140,21 @@ function deleteAttendance(userId) {
         .then((result) => result.rows[0]);
 }
 
+function getAttendingEvents(userId, eventId, attendance) {
+    return db.query(
+        `SELECT user_id, event_id, attendance, book_id, event_date, title, year, author_id, name, 
+    FROM attendance
+    JOIN events
+    ON event_id = events.id
+    JOIN users
+    ON user_id = users.id
+    JOIN books 
+    ON book_id = books.id
+    WHERE users.id = $1 AND events.id = $2 AND attendanceId = $3`,
+        [userId, eventId, attendance]
+    );
+}
+
 module.exports = {
     createUser,
     getUserByEmail,
@@ -153,4 +168,5 @@ module.exports = {
     getAttendance,
     createAttendance,
     deleteAttendance,
+    getAttendingEvents,
 };

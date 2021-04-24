@@ -1,11 +1,7 @@
 import axios from "../axios";
 import { useState, useEffect } from "react";
 
-export default function AttendingButton({
-    bookId,
-    eventId,
-    onAttendingtoEvent,
-}) {
+export default function AttendingButton({ bookId, eventId, onEventResponse }) {
     console.log("ATTENDING-Button", bookId, eventId);
     const [buttonText, setButtonText] = useState("Attending");
     const [attending, setAttending] = useState(false);
@@ -54,7 +50,7 @@ export default function AttendingButton({
                     );
                     setAttending(true);
                     setNotAttending(false);
-                    onAttendingtoEvent(eventId);
+                    onEventResponse(eventId);
                 });
             return;
         }
