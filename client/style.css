@@ -131,7 +131,7 @@ header {
 
 .button-general {
     margin-top: 30px;
-    width: 250px;
+    width: 150px;
     color: #fbe0c4;
     background-color: #ffab73;
     border-style: none;
@@ -141,6 +141,16 @@ header {
 
 .button-general:hover {
     background-color: #ffd384;
+}
+
+.button-attending {
+    margin-top: 30px;
+    width: 150px;
+    color: #fbe0c4;
+    background-color: #ffab73;
+    border-style: none;
+    padding: 0.3em 1.2em;
+    border-radius: 2em;
 }
 
 .button-login {
@@ -158,6 +168,10 @@ header {
 .button-upload {
     width: 100px;
     margin-top: 0;
+}
+
+.button-create-event {
+    width: 120px;
 }
 
 .uploader-form {
@@ -240,4 +254,10 @@ a {
     display: inline-block;
     position: relative;
     vertical-align: middle;
+}
+
+/*------- EVENT LIST aka Event Form --------*/
+
+.event-info {
+    text-align: center;
 }

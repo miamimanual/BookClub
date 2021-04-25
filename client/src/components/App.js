@@ -96,7 +96,7 @@ class App extends Component {
     }
 
     render() {
-        const logo = "/avatar+dragon.png";
+        const logo = "/books_logo.png"; // how to get a pic?
         const src = logo;
 
         return (
@@ -105,15 +105,8 @@ class App extends Component {
                     <header>
                         <img className="logo" src={src} alt="logo" />
 
-                        <Link className="position-header" to="/">
-                            Home
-                        </Link>
-
                         <Link className="position-header" to="/search">
                             Search
-                        </Link>
-                        <Link className="position-header" to="/friends">
-                            Friends
                         </Link>
 
                         <Link to="/">
@@ -184,4 +177,14 @@ export default App;
                                 history={props.history}
                             />
                         )}
-                    /> */
+ />
+                    
+                    
+// Header links: 
+<Link className="position-header" to="/">
+Home </Link>
+
+ <Link className="position-header" to="/friends">
+                            Friends
+                        </Link>
+                    */

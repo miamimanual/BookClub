@@ -16,15 +16,21 @@ export default function EventList({
     console.log("EVENTS", events);
 
     function renderButton() {
-        return <button onClick={onNewEventClick}>Create Event</button>;
+        return (
+            <button
+                className="button-general button-create-event"
+                onClick={onNewEventClick}
+            >
+                Create Event
+            </button>
+        );
     }
 
     function renderList() {
         return events.map((event) => {
             return (
-                <article key={event.event_id}>
+                <article className="event-info" key={event.event_id}>
                     <p>Event Date: {formatDate(event.event_date)}</p>
-                    <br></br>
                     created by: {event.first} {event.last}
                     <p>
                         <AttendingButton

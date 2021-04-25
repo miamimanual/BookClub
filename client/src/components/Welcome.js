@@ -26,7 +26,7 @@ export default function Welcome() {
             </Route>
             <Route path="/login">
                 <section className="login general-position">
-                    <h2>Welcome to Munity</h2>
+                    <h2>Welcome back yo your BookClub</h2>
                     <LoginForm onSuccess={onSuccess}></LoginForm>
                     <footer>
                         No account? <Link to="/">Register</Link>{" "}
