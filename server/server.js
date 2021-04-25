@@ -295,8 +295,9 @@ app.delete(
     "/api/books/:id/events/:event_id/attendance",
     (request, response) => {
         const userId = request.session.userId;
+        const eventId = request.params.event_id;
 
-        deleteAttendance(userId) // eventId?
+        deleteAttendance(userId, eventId) // eventId?
             .then(() => {
                 response.json({ messsage: "no attendance" });
             })
@@ -308,10 +309,10 @@ app.delete(
 
 app.get("/api/user/my-event", (request, response) => {
     const userId = request.session.userId;
-    const eventId = request.params.event_id;
-    const attendance = true;
+    // const eventId = request.params.event_id;
+    // const attendance = true;
 
-    getAttendingEvents(userId, eventId, attendance).then((result) => {
+    getAttendingEvents(userId).then((result) => {
         response.json(result);
     });
 });

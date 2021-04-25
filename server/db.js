@@ -130,17 +130,18 @@ function createAttendance(userId, eventId, attendance) {
         .then((result) => result.rows[0]);
 }
 
-function deleteAttendance(userId) {
+function deleteAttendance(userId, eventId) {
     return db
         .query(
             `DELETE FROM attendance
-        WHERE user_id = $1`,
-            [userId]
+        WHERE user_id = $1 
+        AND event_id = $2`,
+            [userId, eventId]
         )
         .then((result) => result.rows[0]);
 }
 
-function getAttendingEvents(userId, eventId, attendance) {
+function getAttendingEvents(userId) {
     return db
         .query(
             `SELECT user_id, event_id, attendance, book_id, event_date, title, year, author_id, name, 
@@ -152,7 +153,7 @@ function getAttendingEvents(userId, eventId, attendance) {
     JOIN books 
     ON book_id = books.id
     WHERE users.id = $1 AND events.id = $2 AND attendanceId = $3`,
-            [userId, eventId, attendance]
+            [userId]
         )
         .then((result) => result.rows[0]);
 }

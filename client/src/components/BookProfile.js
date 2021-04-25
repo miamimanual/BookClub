@@ -68,6 +68,7 @@ class BookProfile extends Component {
                 const newBook = { ...this.state.book, events: [response.data] };
                 this.setState({
                     book: newBook,
+                    showCreateEventForm: false,
                 });
             });
     }

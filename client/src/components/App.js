@@ -95,7 +95,7 @@ class App extends Component {
     }
 
     render() {
-        const logo = ""; // how to get a pic?
+        const logo = "1.jpg"; // how to get a pic?
         const src = logo;
 
         return (

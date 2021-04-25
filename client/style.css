@@ -265,7 +265,37 @@ a {
 
 .book-cover {
     width: 6rem;
-    height: 8rem;
     object-fit: cover;
     margin-bottom: 5px;
 }
+
+/*---- EVENT FORM ---*/
+
+.event-form {
+    margin-top: 10px;
+}
+
+.date {
+    margin-left: 2px;
+}
+
+/*
+::-webkit-datetime-edit-fields-wrapper {
+    background: #312c51;
+}
+::-webkit-datetime-edit-text {
+    padding: 0;
+}
+::-webkit-datetime-edit-month-field {
+    color: #fff3b2;
+}
+::-webkit-datetime-edit-day-field {
+    color: #fff3b2;
+}
+::-webkit-datetime-edit-year-field {
+    color: #fff3b2;
+}
+::-webkit-calendar-picker-indicator {
+    background: #312c51;
+}
+*/
