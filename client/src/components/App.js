@@ -86,17 +86,16 @@ class App extends Component {
     }
 
     onEventResponse() {
-        axios.get("/api/user/:id/my-events/:event_id").then((response) => {
+        axios.get("/api/user/my-event").then((response) => {
             this.setState({
                 ...this.state,
-                userEvents: [response.data],
+                userEvents: response.data,
             });
         });
-        console.log();
     }
 
     render() {
-        const logo = "/books_logo.png"; // how to get a pic?
+        const logo = ""; // how to get a pic?
         const src = logo;
 
         return (

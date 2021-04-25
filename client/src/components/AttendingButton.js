@@ -77,7 +77,7 @@ export default function AttendingButton({ bookId, eventId, onEventResponse }) {
     }
 
     return (
-        <button className="button-attending" onClick={onClick}>
+        <button className="button-general" onClick={onClick}>
             {buttonText}
         </button>
     );

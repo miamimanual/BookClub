@@ -85,9 +85,8 @@ class BookProfile extends Component {
         return (
             <section className="profile">
                 <h2>{title}</h2>
-                <div className="sidebar-profile-pic">
-                    <img src={cover}></img>
-                </div>
+                <img className="book-cover" src={cover}></img>
+
                 <div className="sidebar-content">
                     {name} ({year})
                 </div>

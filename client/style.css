@@ -1,7 +1,7 @@
 body {
     margin: 0;
     height: 100vh;
-    background-color: #edffec;
+    background-color: #312c51;
     font-family: "Poppins", Helvetica, Arial, sans-serif;
 }
 
@@ -9,7 +9,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #fbe0c4;
+    background-color: #312c51;
     padding-top: 8px;
     padding-right: 8px;
     padding-left: 8px;
@@ -84,10 +84,11 @@ header {
     align-items: center;
     padding-top: 50px;
     flex-wrap: wrap;
+    color: #edffec;
 }
 
 .sidebar-content {
-    color: #542e71;
+    color: #fbe0c4;
     text-align: center;
     width: 500px;
 }
@@ -132,25 +133,15 @@ header {
 .button-general {
     margin-top: 30px;
     width: 150px;
-    color: #fbe0c4;
-    background-color: #ffab73;
+    color: #312c51;
+    background-color: #f1aa9b;
     border-style: none;
     padding: 0.3em 1.2em;
     border-radius: 2em;
 }
 
 .button-general:hover {
-    background-color: #ffd384;
-}
-
-.button-attending {
-    margin-top: 30px;
-    width: 150px;
-    color: #fbe0c4;
-    background-color: #ffab73;
-    border-style: none;
-    padding: 0.3em 1.2em;
-    border-radius: 2em;
+    background-color: #fff3b2;
 }
 
 .button-login {
@@ -243,7 +234,7 @@ header {
 }
 a {
     text-decoration: none;
-    color: #542e71;
+    color: #edffec;
 }
 
 .position-header {
@@ -260,4 +251,21 @@ a {
 
 .event-info {
     text-align: center;
+}
+
+/* ---- EVENT---- */
+
+.event-date {
+    background-color: #fff3b2;
+    color: #312c51;
+    margin-bottom: 0;
+}
+
+/*--- BOOK COVER ---*/
+
+.book-cover {
+    width: 6rem;
+    height: 8rem;
+    object-fit: cover;
+    margin-bottom: 5px;
 }

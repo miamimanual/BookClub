@@ -11,7 +11,7 @@ export default function Welcome() {
         <HashRouter>
             <Route exact path="/">
                 <section className="welcome general-position">
-                    <h2>Bookclub</h2>
+                    <h2>BookClub</h2>
                     <h4>
                         Share your passion for books with people all over the
                         world
@@ -26,7 +26,7 @@ export default function Welcome() {
             </Route>
             <Route path="/login">
                 <section className="login general-position">
-                    <h2>Welcome back yo your BookClub</h2>
+                    <h2>Welcome back to your BookClub</h2>
                     <LoginForm onSuccess={onSuccess}></LoginForm>
                     <footer>
                         No account? <Link to="/">Register</Link>{" "}

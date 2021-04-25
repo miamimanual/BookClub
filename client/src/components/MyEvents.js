@@ -1,5 +1,22 @@
-import { useEffect } from "react";
+/*
 
+export default function MyEvents({ //this.state.userEvents
+    events,
+    onEventCancel
+}) {
+    function onButtonClick(eventId) {
+        axios.delete(...).then((
+            onEventCancel(); 
+        ));
+    }
+    // inside every event element you will have a button:
+    // <button onButtonClick={() => onEventCancel(eventId)}>...</button>
+    return events.map(...);
+}
+
+*/
+
+/*
 function attendance(userEvents = []) {
     const attending = [];
     const notAttending = [];
@@ -13,11 +30,11 @@ function attendance(userEvents = []) {
     });
     return [attending, notAttending];
 }
-/*
-export default function AttendanceEvent() {
+
+export default function MyEvents(this.state.userEvents) {
     const [attendingEvents, setAttendingEvents] = useState([]);
     const [notAttendingEvents, setnotAttendingEvents] = useState([]);
 
-    // useEffect(() => );
+    useEffect(() => );
 }
 */

@@ -30,7 +30,9 @@ export default function EventList({
         return events.map((event) => {
             return (
                 <article className="event-info" key={event.event_id}>
-                    <p>Event Date: {formatDate(event.event_date)}</p>
+                    <p className="event-date">
+                        Event Date: {formatDate(event.event_date)}
+                    </p>
                     created by: {event.first} {event.last}
                     <p>
                         <AttendingButton
