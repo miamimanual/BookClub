@@ -1,5 +1,5 @@
 import AttendingButton from "./AttendingButton";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function formatDate(date) {
     console.log("date", date);
@@ -34,7 +34,10 @@ export default function EventList({
                     <p className="event-date">
                         Event Date: {formatDate(event.event_date)}
                     </p>
-                    created by: {event.first} {event.last}
+                    <Link to="/">
+                        created by: {event.first} {event.last}
+                    </Link>
+
                     <p>
                         <AttendingButton
                             bookId={bookId}
@@ -48,6 +51,9 @@ export default function EventList({
     }
 
     /*
+    <Link to="/">
+    </Link>
+
 
      <Link to={`/user/${userId}`} target="_blank">
                         {event.first} {event.last}

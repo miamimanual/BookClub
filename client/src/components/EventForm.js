@@ -40,11 +40,7 @@ export default function EventForm({ onFormSubmit }) {
                 </span>
             </label>
             <br></br>
-            <input
-                className="button-general button-create-event"
-                type="submit"
-                value="Submit"
-            />
+            <input className="button-general" type="submit" value="Submit" />
         </form>
     );
 }

@@ -1,6 +1,6 @@
 import ProfilePicture from "./ProfilePicture";
 import BioEditor from "./BioEditor";
-import MyEvents from "./MyEvents";
+//import MyEvents from "./MyEvents";
 
 function Profile({
     firstName,

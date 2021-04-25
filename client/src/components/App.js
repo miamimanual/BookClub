@@ -100,7 +100,7 @@ class App extends Component {
     }
 
     render() {
-        const logo = "1.jpg"; // how to get a pic?
+        const logo = "/book_logo4.jpg"; // how to get a pic? require('/images/image-name.png')
         const src = logo;
 
         return (
