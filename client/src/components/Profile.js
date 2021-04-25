@@ -1,5 +1,6 @@
 import ProfilePicture from "./ProfilePicture";
 import BioEditor from "./BioEditor";
+import MyEvents from "./MyEvents";
 
 function Profile({
     firstName,
@@ -30,3 +31,5 @@ function Profile({
 }
 
 export default Profile;
+
+//   <MyEvents />

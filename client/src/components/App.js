@@ -42,7 +42,12 @@ class App extends Component {
                 },
             });
         });
-        //   axios.get("/api/user/my-events")
+        axios.get("/api/user/my-event").then((response) => {
+            this.setState({
+                ...this.state,
+                userEvents: response.data,
+            });
+        });
     }
 
     onProfilePictureClick() {

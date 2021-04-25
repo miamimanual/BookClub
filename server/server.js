@@ -310,11 +310,20 @@ app.delete(
 app.get("/api/user/my-event", (request, response) => {
     const userId = request.session.userId;
     // const eventId = request.params.event_id;
-    // const attendance = true;
+    const attendance = request.params.attendance;
+    console.log("Server: EVENT LIST", attendance);
 
-    getAttendingEvents(userId).then((result) => {
-        response.json(result);
-    });
+    getAttendingEvents(userId)
+        .then((result) => {
+            if (attendance === false) {
+                response.json({ message: "no events yet" });
+                return;
+            }
+            response.json(result);
+        })
+        .catch((error) =>
+            console.log("server[app.get] attendance list: error", error)
+        );
 });
 
 /*

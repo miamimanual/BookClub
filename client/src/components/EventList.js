@@ -1,4 +1,5 @@
 import AttendingButton from "./AttendingButton";
+//import { Link } from "react-router-dom";
 
 function formatDate(date) {
     console.log("date", date);
@@ -47,6 +48,12 @@ export default function EventList({
     }
 
     /*
+
+     <Link to={`/user/${userId}`} target="_blank">
+                        {event.first} {event.last}
+                    </Link>
+
+
         if (events.length === 0) {
             renderButton();
         }

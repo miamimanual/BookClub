@@ -1,6 +1,33 @@
+import axios from "../axios";
+import { Link } from "react-router-dom";
 
+export default function MyEvents({ events, onEventResponse, eventId }) {
+    function onButtonClick(eventId) {
+        axios.get("/api/user/my-event").then((response) => {
+            onEventResponse();
+            this.setState({
+                ...this.state,
+                userEvents: response.data,
+            });
+        });
+    }
 
+    return events.map((event) => {
+        return (
+            <div key={event.events.id}>
+                <Link to={"/user/" + event.events.id} target="_blank">
+                    <img className="book-cover" src={event.cover}></img>
+                    {event.events.name}{" "}
+                </Link>
+                <button onButtonClick={() => onEventResponse(eventId)}>
+                    {buttonText}
+                </button>
+            </div>
+        );
+    });
+}
 
+/*
 export default function MyEvents(events,
     onEventResponse) {
     const [acceptedEvents, setAcceptedEvents] = useState([]);
