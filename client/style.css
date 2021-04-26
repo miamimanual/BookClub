@@ -153,6 +153,14 @@ header {
     background-color: #fff3b2;
 }
 
+.button-bio {
+    background-color: #fff3b2;
+}
+
+.button-bio:hover {
+    background-color: #fcf6d5;
+}
+
 .button-login {
     margin-bottom: 30px;
 }

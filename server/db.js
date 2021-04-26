@@ -144,7 +144,7 @@ function deleteAttendance(userId, eventId) {
 function getAttendingEvents(userId) {
     return db
         .query(
-            `SELECT user_id, event_id, book_id, event_date, name, title, year
+            `SELECT user_id, event_id, book_id, event_date, event_time, name, title, year
 FROM attendance
 JOIN events 
 ON event_id = events.id

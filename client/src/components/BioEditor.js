@@ -60,7 +60,10 @@ class BioEditor extends Component {
             return (
                 <>
                     <p>{bioText}</p>
-                    <button className="button-general" onClick={this.editBio}>
+                    <button
+                        className="button-general button-bio"
+                        onClick={this.editBio}
+                    >
                         {buttonText}
                     </button>
                 </>

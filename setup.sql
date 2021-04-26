@@ -1,7 +1,7 @@
 /* DROP TABLE IF EXISTS users; */ 
 /* DROP TABLE IF EXISTS books; */
 /* DROP TABLE IF EXISTS authors; */
-DROP TABLE IF EXISTS attendance;
+/* DROP TABLE IF EXISTS attendance; */
 DROP TABLE IF EXISTS events;
 
 
@@ -36,7 +36,8 @@ CREATE TABLE events (
     id              SERIAL PRIMARY KEY,
     book_id         INT REFERENCES books(id) NOT NULL,
     creator_id      INT REFERENCES users(id) NOT NULL,
-    event_date      DATE
+    event_date      DATE,
+    event_time      TIME
 );
 
 CREATE TABLE attendance (

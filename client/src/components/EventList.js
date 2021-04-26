@@ -50,25 +50,5 @@ export default function EventList({
         });
     }
 
-    /*
-    <Link to="/">
-    </Link>
-
-
-     <Link to={`/user/${userId}`} target="_blank">
-                        {event.first} {event.last}
-                    </Link>
-
-
-        if (events.length === 0) {
-            renderButton();
-        }
-
-        axios.post(`/api/books/:id/events`).then((response) => {
-            console.log("AXIOS, eventList", response);
-            setMeetup(response.data.newEvent);
-        }, []);
-    }); */
-
     return events.length ? renderList() : renderButton();
 }
