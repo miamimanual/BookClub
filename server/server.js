@@ -240,9 +240,10 @@ app.get("/api/books/:id", (request, response) => {
 app.post("/api/books/:id/events", (request, response) => {
     const bookId = request.params.id;
     const { date } = request.body;
+    const { time } = request.body;
     const creator = request.session.userId;
 
-    createEvent({ bookId, creator, date })
+    createEvent({ bookId, creator, date, time })
         .then((newEvent) => {
             getUserById({ userId: creator }).then((user) => {
                 response.json({

@@ -8,6 +8,31 @@ function formatDate(date) {
     return newDate;
 }
 
+function formatTime(time) {
+    const timeObject = new Date(`August 19, 1975 ${time} GMT+00:00`);
+    console.log("dateObject", timeObject);
+    const newTime = timeObject.toLocaleTimeString("en-US");
+    console.log("newTime", newTime);
+
+    return newTime.split(":").slice(0, 2).join(":");
+}
+/*
+const event = new Date("August 19, 1975 23:15:30 GMT+00:00");
+console.log(event.toLocaleTimeString("en-US"));
+*/
+/*
+  var timeObject = new Date(date, time);
+    console.log("timeObject", timeObject);
+
+    var options = {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+    };
+    var newTime = timeObject.toLocaleString("en-US", options);
+    console.log("newTime", newTime);
+*/
+
 export default function EventList({
     events,
     onNewEventClick,
@@ -32,7 +57,9 @@ export default function EventList({
             return (
                 <article className="event-info" key={event.event_id}>
                     <p className="event-date">
-                        Event Date: {formatDate(event.event_date)}
+                        MeetUp: {formatDate(event.event_date)}
+                        <br></br>
+                        Starts: {formatTime(event.event_time)}
                     </p>
                     <Link to="/">
                         created by: {event.first} {event.last}

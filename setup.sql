@@ -1,8 +1,8 @@
-/* DROP TABLE IF EXISTS users; */ 
-/* DROP TABLE IF EXISTS books; */
-/* DROP TABLE IF EXISTS authors; */
-/* DROP TABLE IF EXISTS attendance; */
+DROP TABLE IF EXISTS attendance;
 DROP TABLE IF EXISTS events;
+/*DROP TABLE IF EXISTS users; 
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS authors; */
 
 
 
