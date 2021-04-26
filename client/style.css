@@ -220,6 +220,15 @@ header {
     padding-bottom: 10px;
 }
 
+.my-events-result-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
 .find-people-img {
     width: 3rem;
     height: 3rem;
@@ -280,12 +289,17 @@ a {
     margin-bottom: 0;
 }
 
+.event-time {
+    margin-top: 0;
+}
+
 /*--- BOOK COVER ---*/
 
 .book-cover {
     width: 6rem;
     object-fit: cover;
     margin-bottom: 5px;
+    height: 9.4rem;
 }
 
 /*---- EVENT FORM ---*/

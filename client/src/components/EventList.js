@@ -11,27 +11,16 @@ function formatDate(date) {
 function formatTime(time) {
     const timeObject = new Date(`August 19, 1975 ${time} GMT+00:00`);
     console.log("dateObject", timeObject);
-    const newTime = timeObject.toLocaleTimeString("en-US");
-    console.log("newTime", newTime);
-
-    return newTime.split(":").slice(0, 2).join(":");
-}
-/*
-const event = new Date("August 19, 1975 23:15:30 GMT+00:00");
-console.log(event.toLocaleTimeString("en-US"));
-*/
-/*
-  var timeObject = new Date(date, time);
-    console.log("timeObject", timeObject);
-
-    var options = {
+    const newTime = timeObject.toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "numeric",
         hour12: true,
-    };
-    var newTime = timeObject.toLocaleString("en-US", options);
+    });
     console.log("newTime", newTime);
-*/
+    console.log("newTime", typeof newTime);
+
+    return newTime.split(":").slice(0, 2).join(":");
+}
 
 export default function EventList({
     events,
@@ -58,7 +47,8 @@ export default function EventList({
                 <article className="event-info" key={event.event_id}>
                     <p className="event-date">
                         MeetUp: {formatDate(event.event_date)}
-                        <br></br>
+                    </p>
+                    <p className="event-time">
                         Starts: {formatTime(event.event_time)}
                     </p>
                     <Link to="/">

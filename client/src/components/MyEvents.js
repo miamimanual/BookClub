@@ -1,7 +1,6 @@
 import axios from "../axios";
 import { Link } from "react-router-dom";
 import { getBookCoverById } from "../lib";
-//bookid
 
 export default function MyEvents({ events, onEventResponse }) {
     function onButtonClick(eventId) {
@@ -24,7 +23,7 @@ export default function MyEvents({ events, onEventResponse }) {
                         ></img>
                     </Link>
                 </div>
-                <div className="result-content my-events-book-info">
+                <div className="my-events-result-content my-events-book-info">
                     <Link to={"/books/" + event.book_id}>
                         {event.title} ({event.year})
                     </Link>
