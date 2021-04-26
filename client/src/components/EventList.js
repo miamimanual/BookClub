@@ -43,6 +43,7 @@ export default function EventList({
 
     function renderList() {
         return events.map((event) => {
+            console.log("creator", event.creator_id);
             return (
                 <article className="event-info" key={event.event_id}>
                     <p className="event-date">
@@ -69,3 +70,8 @@ export default function EventList({
 
     return events.length ? renderList() : renderButton();
 }
+
+/*
+<Link to="{event.creator_id}">
+
+*/
