@@ -312,6 +312,7 @@ app.get("/api/user/my-events", (request, response) => {
     getAttendingEvents(userId)
         .then((result) => {
             response.json(result);
+            console.log(result, result[0].event_id);
         })
         .catch((error) =>
             console.log("server[app.get] attendance list: error", error)
