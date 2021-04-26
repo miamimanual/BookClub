@@ -28,8 +28,7 @@ CREATE TABLE books (
     author_id       INT REFERENCES authors(id) NOT NULL,
     description     VARCHAR(255),
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    cover_url       T
-    EXT, 
+    cover_url       TEXT, 
     year            INTEGER 
 );
 

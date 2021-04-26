@@ -48,7 +48,10 @@ class RegistrationForm extends Component {
         return (
             <div className="registration-form">
                 <p className="error">{this.state.error}</p>
-                <form onSubmit={this.onFormSubmit}>
+                <form
+                    className="general-position-register"
+                    onSubmit={this.onFormSubmit}
+                >
                     <input
                         className="input"
                         type="text"

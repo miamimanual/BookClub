@@ -2,6 +2,8 @@ import axios from "../axios";
 import { Link } from "react-router-dom";
 
 export default function MyEvents({ events, onEventResponse, eventId }) {
+    // const [buttonText, setButtonText] = useState("Attending");
+
     function onButtonClick(eventId) {
         axios.get("/api/user/my-event").then((response) => {
             onEventResponse();

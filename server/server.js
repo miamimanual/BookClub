@@ -310,13 +310,13 @@ app.delete(
 app.get("/api/user/my-event", (request, response) => {
     const userId = request.session.userId;
     // const eventId = request.params.event_id;
-    const attendance = request.params.attendance;
-    console.log("Server: EVENT LIST", attendance);
+    //const attendance = request.params.attendance;
 
     getAttendingEvents(userId)
         .then((result) => {
-            if (attendance === false) {
-                response.json({ message: "no events yet" });
+            if (!result) {
+                response.json({ message: "no events yet", userEvents: [] }); //             userEvents: [],
+
                 return;
             }
             response.json(result);
@@ -326,11 +326,6 @@ app.get("/api/user/my-event", (request, response) => {
         );
 });
 
-/*
-  if (attendance === false) {
-            response.json({ message: "no events yet" });
-            return;
-*/
 app.get("/welcome", (request, response) => {
     if (request.session.userId) {
         response.redirect("/");

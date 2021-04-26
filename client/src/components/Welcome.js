@@ -18,7 +18,7 @@ export default function Welcome() {
                     </h4>
 
                     <RegistrationForm onSuccess={onSuccess}></RegistrationForm>
-                    <footer className="welcome-footer">
+                    <footer className="welcome-footer-register general-position">
                         Already have an <Link to="/login">account</Link>
                         <br></br>
                     </footer>
@@ -28,7 +28,7 @@ export default function Welcome() {
                 <section className="login general-position">
                     <h2>Welcome back to your BookClub</h2>
                     <LoginForm onSuccess={onSuccess}></LoginForm>
-                    <footer>
+                    <footer className="welcome-footer general-position">
                         No account? <Link to="/">Register</Link>{" "}
                     </footer>
                 </section>
