@@ -1,28 +1,26 @@
 import axios from "../axios";
 import { Link } from "react-router-dom";
+import { getBookCoverById } from "../lib";
+//bookid
 
-export default function MyEvents({ events, onEventResponse, eventId }) {
-    // const [buttonText, setButtonText] = useState("Attending");
-
+export default function MyEvents({ events, onEventResponse }) {
     function onButtonClick(eventId) {
-        axios.get("/api/user/my-event").then((response) => {
+        axios.delete(`/api/events/${eventId}/attendance`).then(() => {
             onEventResponse();
-            this.setState({
-                ...this.state,
-                userEvents: response.data,
-            });
         });
     }
 
     return events.map((event) => {
+        const cover = getBookCoverById(events.book_id);
+        const src = cover;
         return (
-            <div key={event.events.id}>
-                <Link to={"/user/" + event.events.id} target="_blank">
-                    <img className="book-cover" src={event.cover}></img>
+            <div key={event.events_id}>
+                <Link to={"/books/" + event.events_id} target="_blank">
+                    <img className="book-cover" src={src}></img>
                     {event.events.name}{" "}
                 </Link>
-                <button onButtonClick={() => onEventResponse(eventId)}>
-                    {buttonText}
+                <button onButtonClick={() => onButtonClick(event.event_id)}>
+                    I am not Attending
                 </button>
             </div>
         );

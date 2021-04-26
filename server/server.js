@@ -291,34 +291,26 @@ app.post("/api/books/:id/events/:event_id/attendance", (request, response) => {
         .catch((error) => console.log("server[app.post]: error", error));
 });
 
-app.delete(
-    "/api/books/:id/events/:event_id/attendance",
-    (request, response) => {
-        const userId = request.session.userId;
-        const eventId = request.params.event_id;
+app.delete("/api/events/:event_id/attendance", (request, response) => {
+    const userId = request.session.userId;
+    const eventId = request.params.event_id;
 
-        deleteAttendance(userId, eventId) // eventId?
-            .then(() => {
-                response.json({ messsage: "no attendance" });
-            })
-            .catch((error) => console.log("server[app.delete]: error", error));
-    }
-);
+    deleteAttendance(userId, eventId) // eventId?
+        .then(() => {
+            response.json({ messsage: "no attendance" });
+        })
+        .catch((error) => console.log("server[app.delete]: error", error));
+});
 
 /* ----------- ATTENDANCE LIST ---------------*/
 
-app.get("/api/user/my-event", (request, response) => {
+app.get("/api/user/my-events", (request, response) => {
     const userId = request.session.userId;
     // const eventId = request.params.event_id;
     //const attendance = request.params.attendance;
 
     getAttendingEvents(userId)
         .then((result) => {
-            if (!result) {
-                response.json({ message: "no events yet", userEvents: [] }); //             userEvents: [],
-
-                return;
-            }
             response.json(result);
         })
         .catch((error) =>

@@ -7,7 +7,7 @@ import ProfilePictureUploader from "./ProfilePictureUploader";
 import Profile from "./Profile";
 import BookProfile from "./BookProfile";
 import SearchBooks from "./SearchBooks";
-//import Friends from "./Friends";
+import MyEvents from "./MyEvents";
 
 class App extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class App extends Component {
         this.onUpload = this.onUpload.bind(this);
         this.onModalClose = this.onModalClose.bind(this);
         this.onSaveBio = this.onSaveBio.bind(this);
-        this.onEventResponse = this.onEventResponse.bind(this);
+        this.updateEvents = this.updateEvents.bind(this);
     }
     componentDidMount() {
         axios.get("/user").then((response) => {
@@ -41,12 +41,7 @@ class App extends Component {
                     bio: response.data.result.bio,
                 },
             });
-        });
-        axios.get("/api/user/my-event").then((response) => {
-            this.setState({
-                ...this.state,
-                userEvents: response.data,
-            });
+            this.updateEvents();
         });
     }
 
@@ -90,8 +85,8 @@ class App extends Component {
             });
     }
 
-    onEventResponse() {
-        axios.get("/api/user/my-event").then((response) => {
+    updateEvents() {
+        axios.get("/api/user/my-events").then((response) => {
             this.setState({
                 ...this.state,
                 userEvents: response.data,
@@ -126,14 +121,22 @@ class App extends Component {
                         exact
                         path="/"
                         render={() => (
-                            <Profile
-                                firstName={this.state.user.firstName}
-                                lastName={this.state.user.lastName}
-                                profilePicURL={this.state.user.profilePicURL}
-                                onClick={this.onProfilePictureClick}
-                                bio={this.state.user.bio}
-                                onSaveBio={this.onSaveBio}
-                            />
+                            <div>
+                                <Profile
+                                    firstName={this.state.user.firstName}
+                                    lastName={this.state.user.lastName}
+                                    profilePicURL={
+                                        this.state.user.profilePicURL
+                                    }
+                                    onClick={this.onProfilePictureClick}
+                                    bio={this.state.user.bio}
+                                    onSaveBio={this.onSaveBio}
+                                />
+                                <MyEvents
+                                    events={this.state.userEvents}
+                                    onEventResponse={this.updateEvents}
+                                />
+                            </div>
                         )}
                     />
                     <Route path="/other">other</Route>
@@ -145,7 +148,7 @@ class App extends Component {
                                 id={parseInt(props.match.params.id)}
                                 key={props.match.url}
                                 history={props.history}
-                                onEventResponse={this.onEventResponse}
+                                onEventResponse={this.updateEvents}
                             />
                         )}
                     />

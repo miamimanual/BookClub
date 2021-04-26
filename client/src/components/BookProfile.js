@@ -59,11 +59,11 @@ class BookProfile extends Component {
         });
     }
 
-    onFormSubmit(date) {
+    onFormSubmit({ date, time }) {
         console.log("DATE", date);
 
         axios
-            .post(`/api/books/${this.props.id}/events`, { date })
+            .post(`/api/books/${this.props.id}/events`, { date, time })
             .then((response) => {
                 const newBook = { ...this.state.book, events: [response.data] };
                 this.setState({
@@ -74,8 +74,7 @@ class BookProfile extends Component {
     }
 
     renderForm() {
-        const { date } = this.state.book;
-        return <EventForm date={date} onFormSubmit={this.onFormSubmit} />;
+        return <EventForm onFormSubmit={this.onFormSubmit} />;
     }
 
     render() {

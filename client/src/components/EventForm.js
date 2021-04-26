@@ -6,12 +6,13 @@ export default function EventForm({ onFormSubmit }) {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        onFormSubmit(date);
-        onFormSubmit(time);
+        onFormSubmit({ date, time });
     };
-    const onChange = (event) => {
-        event.preventDefault();
+    const onChangeDate = (event) => {
         setDate(event.target.value);
+    };
+
+    const onChangeTime = (event) => {
         setTime(event.target.value);
     };
 
@@ -25,7 +26,7 @@ export default function EventForm({ onFormSubmit }) {
                     name="date"
                     value={date}
                     required
-                    onChange={onChange}
+                    onChange={onChangeDate}
                 />
                 <br></br>
                 <span>
@@ -35,7 +36,7 @@ export default function EventForm({ onFormSubmit }) {
                         name="time"
                         value={time}
                         required
-                        onChange={onChange}
+                        onChange={onChangeTime}
                     />
                 </span>
             </label>
