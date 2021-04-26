@@ -1,14 +1,13 @@
 import ProfilePicture from "./ProfilePicture";
 import BioEditor from "./BioEditor";
-//import MyEvents from "./MyEvents";
 
 function Profile({
     firstName,
     lastName,
     profilePicURL,
-    onClick, // onProfilePictureClick
+    onClick,
     bio,
-    onSaveBio, //function is an action!
+    onSaveBio,
 }) {
     return (
         <section className="profile">

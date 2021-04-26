@@ -132,10 +132,12 @@ class App extends Component {
                                     bio={this.state.user.bio}
                                     onSaveBio={this.onSaveBio}
                                 />
-                                <MyEvents
-                                    events={this.state.userEvents}
-                                    onEventResponse={this.updateEvents}
-                                />
+                                <div className="general-position-my-event">
+                                    <MyEvents
+                                        events={this.state.userEvents}
+                                        onEventResponse={this.updateEvents}
+                                    />
+                                </div>
                             </div>
                         )}
                     />

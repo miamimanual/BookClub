@@ -295,6 +295,38 @@ a {
     margin-left: 2px;
 }
 
+/*---- My Events ----*/
+.my-events-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    flex-wrap: wrap;
+    color: #fbe0c4;
+    margin-right: 30px;
+}
+
+.general-position-my-event {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    flex-wrap: wrap;
+    color: #fbe0c4;
+    text-align: center;
+}
+
+.my-events-button {
+    margin-top: 30px;
+    width: 180px;
+    color: #312c51;
+    background-color: #f1aa9b;
+    border-style: none;
+    padding: 0.3em 1.2em;
+    border-radius: 2em;
+}
 /*
 ::-webkit-datetime-edit-fields-wrapper {
     background: #312c51;
