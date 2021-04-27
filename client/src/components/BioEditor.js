@@ -59,7 +59,7 @@ class BioEditor extends Component {
             const buttonText = this.props.bio ? "Edit Bio" : "Add Bio";
             return (
                 <>
-                    <p>{bioText}</p>
+                    <p className="mobile-view-bio">{bioText}</p>
                     <button
                         className="button-general button-bio"
                         onClick={this.editBio}

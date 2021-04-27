@@ -121,7 +121,7 @@ class App extends Component {
                         exact
                         path="/"
                         render={() => (
-                            <div>
+                            <div className="mobile-view-profile">
                                 <Profile
                                     firstName={this.state.user.firstName}
                                     lastName={this.state.user.lastName}
