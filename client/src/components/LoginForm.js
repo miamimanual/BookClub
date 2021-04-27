@@ -39,7 +39,10 @@ class LoginForm extends Component {
         return (
             <div className="login-form">
                 <p className="error">{this.state.error}</p>
-                <form className="general-position" onSubmit={this.onFormSubmit}>
+                <form
+                    className="general-position mobile-view-login-form"
+                    onSubmit={this.onFormSubmit}
+                >
                     <input
                         className="input"
                         type="email"

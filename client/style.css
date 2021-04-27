@@ -1,6 +1,7 @@
 body {
     margin: 0;
     height: 100vh;
+    /*background-image: url("fish_background.jpg");*/
     background-color: #312c51;
     font-family: "Poppins", Helvetica, Arial, sans-serif;
 }
@@ -349,23 +350,35 @@ a {
     padding: 0.3em 1.2em;
     border-radius: 2em;
 }
-/*
-::-webkit-datetime-edit-fields-wrapper {
-    background: #312c51;
+
+/* ------ MEDIA QUERY -------*/
+
+@media screen and (max-width: 767px) {
+    .mobile-view {
+        align-items: center;
+        width: 100%;
+        padding-bottom: 100px;
+    }
+    .mobile-view-h2 {
+        font-size: 2rem;
+        width: 80%;
+        text-align: center;
+    }
+    .mobile-view-h4 {
+        width: 80%;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .mobile-view-welcome-footer {
+        margin-top: 100px;
+    }
+    .mobile-view-login-footer {
+        margin-top: 150px;
+    }
+    .mobile-view-body {
+        background-image: url("fish_background.jpg");
+    }
+    .mobile-view-login-form {
+        margin-top: 50px;
+    }
 }
-::-webkit-datetime-edit-text {
-    padding: 0;
-}
-::-webkit-datetime-edit-month-field {
-    color: #fff3b2;
-}
-::-webkit-datetime-edit-day-field {
-    color: #fff3b2;
-}
-::-webkit-datetime-edit-year-field {
-    color: #fff3b2;
-}
-::-webkit-calendar-picker-indicator {
-    background: #312c51;
-}
-*/
