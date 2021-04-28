@@ -55,20 +55,16 @@ export default function AttendingButton({ bookId, eventId, onEventResponse }) {
             return;
         }
         if (attending) {
-            axios
-                .delete(`/api/books/${bookId}/events/${eventId}/attendance`)
-                .then(() => {
-                    console.log("[AttendingButton]: onCLick: axios.delte");
-                    setAttending(false);
-                    setNotAttending(false);
-                });
+            axios.delete(`/api/events/${eventId}/attendance`).then(() => {
+                console.log("[AttendingButton]: onCLick: axios.delte");
+                setAttending(false);
+                setNotAttending(false);
+            });
             return;
         }
 
         axios // do I need it?
-            .delete(
-                `/api/books/${this.props.id}/events/${this.props.event_id}/attendance`
-            )
+            .delete(`/api/events/${eventId}/attendance`)
             .then(() => {
                 console.log("[AttendingButton]: onCLick: axios.delete");
                 setAttending(false);

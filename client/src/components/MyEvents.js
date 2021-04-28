@@ -16,7 +16,7 @@ export default function MyEvents({ events, onEventResponse }) {
         return (
             <div className="my-events-box" key={event.event_id}>
                 <div className="my-events-book-cover">
-                    <Link to={"/books/" + event.book_id} target="_blank">
+                    <Link to={"/books/" + event.book_id}>
                         <img
                             className="book-cover"
                             src={getBookCoverById(event.book_id)}
@@ -39,3 +39,7 @@ export default function MyEvents({ events, onEventResponse }) {
         );
     });
 }
+
+/*
+target="_blank"
+*/

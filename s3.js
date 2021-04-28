@@ -1,13 +1,18 @@
 const aws = require("aws-sdk");
-//const { S3 } = require("aws-sdk");
 const fs = require("fs");
-
-let secrets = require("./credentials.json"); // secrets
-
-const s3 = new aws.S3({
-    accessKeyId: secrets.AWS_KEY,
-    secretAccessKey: secrets.AWS_SECRET,
-});
+let s3;
+if (process.env.AWS_KEY) {
+    s3 = new aws.S3({
+        accessKeyId: process.env.AWS_KEY,
+        secretAccessKey: process.env.AWS_SECRET,
+    });
+} else {
+    const secrets = require("./credentials.json"); // secrets
+    s3 = new aws.S3({
+        accessKeyId: secrets.AWS_KEY,
+        secretAccessKey: secrets.AWS_SECRET,
+    });
+}
 
 // it's a middleware: in the name of the request, the response and the next
 function s3upload(request, response, next) {
@@ -49,3 +54,17 @@ function s3upload(request, response, next) {
 module.exports = {
     s3upload,
 };
+
+/*
+
+const aws = require("aws-sdk");
+//const { S3 } = require("aws-sdk");
+const fs = require("fs");
+
+let secrets = require("./credentials.json"); // secrets
+
+const s3 = new aws.S3({
+    accessKeyId: secrets.AWS_KEY,
+    secretAccessKey: secrets.AWS_SECRET,
+});
+*/
